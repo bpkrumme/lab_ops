@@ -1,0 +1,8 @@
+---
+- name: Register clients with Red Hat Insights
+  hosts: all,!lab,!satellite
+  become: false
+  vars_files:
+    - ../vault.yml
+  roles:
+    - role: redhat.insights.insights_client

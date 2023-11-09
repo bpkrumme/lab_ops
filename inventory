@@ -1,0 +1,17 @@
+[ipaservers]
+idm01.bk.lab
+
+[ipareplicas]
+idm02.bk.lab
+
+[satellite]
+satellite.bk.lab
+
+[lab]
+lab.bk.local
+
+[aap]
+aap.bk.lab
+
+[proxy]
+proxy.bk.lab

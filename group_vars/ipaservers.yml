@@ -1,0 +1,7 @@
+ipaserver_domain: bk.lab
+ipaserver_realm: BK.LAB
+ipadm_password: "{{ lab_ipa_dm_password }}"
+ipaserver_setup_dns: true
+ipaserver_no_host_dns: true
+ipaserver_auto_reverse: true
+ipaserver_auto_forwarders: true

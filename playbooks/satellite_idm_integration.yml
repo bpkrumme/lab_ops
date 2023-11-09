@@ -1,0 +1,20 @@
+---
+- name: Create service in IDM domain
+  hosts: ipaservers
+  vars_files:
+    - ../vault.yml
+  tasks:
+    - name: Create http service for satellite server
+      redhat.rhel_idm.ipaservice:
+        ipaadmin_password: "{{ lab_ipa_admin_password }}"
+        name: HTTP/satellite.bk.lab
+
+- name: Configure Satellite for IDM Auth
+  hosts: satellite
+  vars:
+    satellite_installer_scenario: satellite
+    satellite_installer_options:
+      - '--foreman-ipa-authentication=true'
+      - '--foreman-ipa-authentication-api=true'
+  roles:
+    - role: redhat.satellite_operations.installer

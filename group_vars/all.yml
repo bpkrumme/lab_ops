@@ -1,0 +1,14 @@
+ansible_timesync_ntp_servers:
+  - hostname: 0.redhat.pool.ntp.org
+    iburst: yes
+  - hostname: 1.redhat.pool.ntp.org
+    iburst: yes
+  - hostname: 2.redhat.pool.ntp.org
+    iburst: yes
+  - hostname: 3.redhat.pool.ntp.org
+    iburst: yes
+ipaadmin_principal: admin
+ipaadmin_password: "{{ lab_ipa_admin_password }}"
+ipaclient_mkhomedir: true
+lab_satellite_activationkey: LabInfra
+lab_satellite_organization: HomeLab

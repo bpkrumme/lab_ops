@@ -1,0 +1,43 @@
+---
+- name: install satellite
+  hosts: satellite
+  vars_files:
+    - ../vault.yml
+  pre_tasks:
+  - name: unregister from RHSM
+    community.general.redhat_subscription:
+      state: absent
+  - name: register system with RHSM
+    community.general.redhat_subscription:
+      username: bkrumme
+      password: 0p3nDivision2019!
+      pool_ids: 8a82c65581d4f4ae0181d8cbee500ae5
+  - name: disable all rhsm repositories
+    community.general.rhsm_repository:
+      name: "*"
+      state: disabled
+  - name: enable satellite repositories
+    community.general.rhsm_repository:
+      name:
+        - rhel-8-for-x86_64-baseos-rpms
+        - rhel-8-for-x86_64-appstream-rpms
+        - satellite-{{ satellite_version }}-for-rhel-8-x86_64-rpms
+        - satellite-maintenance-{{ satellite_version }}-for-rhel-8-x86_64-rpms
+      state: enabled
+  - name: enable the satellite appstream
+    shell:
+      cmd: 'dnf -y module enable satellite:el8'
+  - name: update all packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+  roles:
+  - role: redhat.rhel_system_roles.timesync
+  - role: redhat.satellite_operations.installer
+  tasks:
+  - name: Enable RH-Satellite-6 Firewalld Service
+    ansible.posix.firewalld:
+      service: RH-Satellite-6
+      permanent: true
+      state: enabled
+      immediate: true

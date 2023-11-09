@@ -1,0 +1,4 @@
+ipareplica_setup_ca: true
+ipareplica_setup_dns: true
+ipareplica_auto_reverse: true
+ipareplica_auto_forwarders: true

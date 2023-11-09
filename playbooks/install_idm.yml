@@ -1,0 +1,27 @@
+---
+- name: Install idm server
+  hosts: ipaservers
+  become: false
+  vars_files:
+    - ../vault.yml
+  pre_tasks:
+    - name: Install the Satellite certificates
+      ansible.builtin.dnf:
+        name: http://172.24.128.7/pub/katello-ca-consumer-latest.noarch.rpm
+        state: present
+        disable_gpg_check: true
+    - name: Register system with Satellite
+      community.general.redhat_subscription:
+        activationkey: "{{ lab_satellite_activationkey }}"
+        org_id: "{{ lab_satellite_organization }}"
+    - name: Install all updates
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+    - name: Reboot before IDM configuration
+      ansible.builtin.reboot:
+        msg: "Rebooting after updates"
+  roles:
+    - role: redhat.rhel_system_roles.timesync
+    - role: redhat.rhel_idm.ipaserver
+      state: present
