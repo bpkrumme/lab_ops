@@ -9,8 +9,8 @@
       state: absent
   - name: register system with RHSM
     community.general.redhat_subscription:
-      username: bkrumme
-      password: 0p3nDivision2019!
+      username: "{{ rhsm_username }}"
+      password: "{{ rhsm_password }}"
       pool_ids: 8a82c65581d4f4ae0181d8cbee500ae5
   - name: disable all rhsm repositories
     community.general.rhsm_repository:
