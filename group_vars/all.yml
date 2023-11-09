@@ -1,12 +1,12 @@
 ansible_timesync_ntp_servers:
   - hostname: 0.redhat.pool.ntp.org
-    iburst: yes
+    iburst: true
   - hostname: 1.redhat.pool.ntp.org
-    iburst: yes
+    iburst: true
   - hostname: 2.redhat.pool.ntp.org
-    iburst: yes
+    iburst: true
   - hostname: 3.redhat.pool.ntp.org
-    iburst: yes
+    iburst: true
 ipaadmin_principal: admin
 ipaadmin_password: "{{ lab_ipa_admin_password }}"
 ipaclient_mkhomedir: true

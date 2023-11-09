@@ -25,4 +25,3 @@
     - role: redhat.rhel_system_roles.timesync
     - role: redhat.rhel_idm.ipareplica
       state: present
-...

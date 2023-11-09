@@ -1,0 +1,7 @@
+lab_satellite_version: 6.14
+lab_satellite_subscription_pool: 8a82c65581d4f4ae0181d8cbee500ae5
+lab_satellite_repositories:
+  - rhel-8-for-x86_64-baseos-rpms
+  - rhel-8-for-x86_64-appstream-rpms
+  - satellite-{{ satellite_version }}-for-rhel-8-x86_64-rpms
+  - satellite-maintenance-{{ satellite_version }}-for-rhel-8-x86_64-rpms

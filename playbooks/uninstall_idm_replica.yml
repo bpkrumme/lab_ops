@@ -3,5 +3,5 @@
   hosts: ipareplicas
   become: false
   roles:
-  - role: redhat.rhel_idm.ipareplica
-    state: absent
+    - role: redhat.rhel_idm.ipareplica
+      state: absent
