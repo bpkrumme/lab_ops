@@ -24,6 +24,8 @@
     - name: Enable the satellite appstream
       ansible.builtin.shell:
         cmd: 'dnf -y module enable satellite:el8'
+      register: sat_module_result
+      changed_when: sat_module_result == 0
     - name: Update all packages
       ansible.builtin.dnf:
         name: "*"

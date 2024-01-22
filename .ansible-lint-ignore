@@ -1,0 +1,5 @@
+playbooks/install_idm.yml package-latest
+playbooks/install_idm_client.yml package-latest
+playbooks/install_satellite.yml package-latest
+playbooks/install_satellite.yml command-instead-of-shell
+playbooks/install_idm_replica.yml package-latest
