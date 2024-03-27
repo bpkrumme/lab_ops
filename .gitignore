@@ -2,4 +2,4 @@ ansible.cfg
 /artifacts
 ansible-navigator.log
 .password
-/lab_ops_ee/context
+lab_ops_ee/context
