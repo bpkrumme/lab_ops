@@ -1,0 +1,10 @@
+---
+- name: Install idm server
+  hosts: ipaservers
+  become: false
+  vars_files:
+    - ../vault.yml
+  roles:
+    - role: redhat.rhel_system_roles.timesync
+    - role: redhat.rhel_idm.ipaserver
+      state: present

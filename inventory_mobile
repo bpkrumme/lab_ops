@@ -1,0 +1,11 @@
+[ipaservers]
+idm.mobile.bk.lab
+
+[ipareplicas]
+idm02.mobile.bk.lab
+
+[satellite]
+satellite.mobile.bk.lab
+
+[aap]
+aap.mobile.bk.lab
