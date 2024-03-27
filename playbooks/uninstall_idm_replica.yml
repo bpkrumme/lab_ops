@@ -4,4 +4,4 @@
   become: false
   roles:
     - role: redhat.rhel_idm.ipareplica
-      state: absent
+      state: absent # noqa: var-naming[no-role-prefix]
