@@ -5,15 +5,6 @@
   vars_files:
     - ../vault.yml
   pre_tasks:
-    - name: Install satellite ca package
-      ansible.builtin.dnf:
-        name: 'http://192.168.124.7/pub/katello-ca-consumer-latest.noarch.rpm'
-        disable_gpg_check: true
-        state: present
-    - name: Register system with Satellite
-      community.general.redhat_subscription:
-        activationkey: "{{ lab_satellite_activationkey }}"
-        org_id: "{{ lab_satellite_organization }}"
     - name: Install all updates
       ansible.builtin.dnf:
         name: "*"
@@ -24,4 +15,4 @@
   roles:
     - role: redhat.rhel_system_roles.timesync
     - role: redhat.rhel_idm.ipaclient
-      state: present # noqa: var-naming[no-role-prefix]
+      state: present
