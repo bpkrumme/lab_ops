@@ -1,0 +1,61 @@
+---
+- name: Compose CIS level 2 compliant osbuild image for IDM Server
+  hosts: utility
+  become: true
+  vars:
+    builder_image_storage_cleared: true
+    builder_compose_type: qcow2
+    builder_blueprint_name: rhel9-cis2-idm
+    builder_pub_key: ~/.ssh/id_rsa.pub
+    builder_compose_pkgs:
+      - aide
+      - sudo
+      - audit
+      - rsyslog
+      - firewalld
+      - nftables
+      - libselinux
+    builder_compose_customizations:
+      user:
+        name: testuser
+        description: test user
+        password: R3dH4tBr4d!
+        key: "{{ builder_pub_key }}"
+        groups: ["users", "wheel"]
+      filesystem: [
+        { mountpoint = "/", min_size = "10 GB" },
+        { mountpoint = "/home", min_size = "5 GB" },
+        { mountpoint = "/tmp", min_size = "5 GB" }
+#        - mountpoint: /
+#          min_size: 10737418240
+#        - mountpoint: /home
+#          min_size: 1073741824
+#        - mountpoint: /tmp
+#          min_size: 1073741824
+#        - mountpoint: /var
+#          min_size: 3221225472
+#        - mountpoint: /var/log
+#          min_size: 5368709120
+#        - mountpoint: /var/log/audit
+#          min_size: 10737418240
+#        - mountpoint: /var/tmp
+#          min_size: 1073741824
+#        - mountpoint: /var/lib
+#          min_size: 21474836480
+      ]
+      kernel:
+        append: "audit_backlog_limit=8192 audit=1"
+#      openscap:
+#        profile_id: xccdf_org.ssgproject.content_profile_cis
+      services:
+        enabled: ["crond", "firewalld", "systemd-journald", "rsyslog", "auditd"]
+        masked: [ "nfs-server", "rpcbind", "nftables"]
+      subscription:
+        activation-key: bpk_lab_key
+        base-url: https://cdn.redhat.com/
+        insights: true
+        organization: 17841984
+        rhc: true
+        server-url: subscription.rhsm.redhat.com
+  roles:
+    - name: infra.osbuild.builder

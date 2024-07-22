@@ -1,6 +1,6 @@
 ---
 - name: Register clients with Red Hat Insights
-  hosts: all,!lab,!satellite
+  hosts: all
   become: false
   vars_files:
     - ../vault.yml

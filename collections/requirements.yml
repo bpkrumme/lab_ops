@@ -1,5 +1,10 @@
 ---
 collections:
+  - name: ansible.posix
+  - name: ansible.utils
+  - name: community.general
   - name: redhat.rhel_system_roles
   - name: redhat.rhel_idm
   - name: redhat.satellite_operations
+  - name: redhat.insights
+  - name: infra.osbuild

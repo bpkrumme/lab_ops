@@ -1,15 +1,24 @@
 ---
 - name: Install basic idm client in lab environment
-  hosts: all,!ipaservers,!ipareplicas,!satellite,!lab
+  hosts: all
   become: false
   vars_files:
     - ../vault.yml
   pre_tasks:
+    - name: Install the Satellite certificates
+      ansible.builtin.dnf:
+        name: http://192.168.124.5/pub/katello-ca-consumer-latest.noarch.rpm
+        state: present
+        disable_gpg_check: true
+    - name: Register system with Satellite
+      community.general.redhat_subscription:
+        activationkey: "{{ lab_satellite_activationkey }}"
+        org_id: "{{ lab_satellite_organization }}"
     - name: Install all updates
       ansible.builtin.dnf:
         name: "*"
         state: latest
-    - name: Reboot after updates
+    - name: Reboot before IDM configuration
       ansible.builtin.reboot:
         msg: "Rebooting after updates"
   roles:

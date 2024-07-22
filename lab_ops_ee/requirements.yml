@@ -1,5 +1,1 @@
----
-collections:
-  - name: redhat.rhel_system_roles
-  - name: redhat.rhel_idm
-  - name: redhat.satellite_operations
+../collections/requirements.yml

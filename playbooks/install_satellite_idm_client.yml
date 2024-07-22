@@ -1,6 +1,6 @@
 ---
 - name: Install basic idm client in lab environment
-  hosts: satellite
+  hosts: all
   become: false
   vars_files:
     - ../vault.yml

@@ -1,5 +1,10 @@
 [galaxy]
-server_list=automation_hub, release_galaxy
+server_list=pah_certified, automation_hub, release_galaxy
+
+[galaxy_server.pah_certified]
+url=https://<insert_pah_url_here>/api/galaxy/content/rh-certified/
+username=<insert_username_here>
+password=<insert_password_here>
 
 [galaxy_server.automation_hub]
 url=https://console.redhat.com/api/automation-hub/content/published/
@@ -8,4 +13,3 @@ token=<insert_token_here>
 
 [galaxy_server.release_galaxy]
 url=https://galaxy.ansible.com/
-
