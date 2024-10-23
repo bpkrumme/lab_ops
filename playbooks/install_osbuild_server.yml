@@ -1,7 +1,7 @@
 ---
-- name: Install basic idm client in lab environment
-  hosts: all
-  become: false
+- name: Install OSBuild Server in Lab environment
+  hosts: utility
+  become: true
   vars_files:
     - ../vault.yml
   pre_tasks:
@@ -13,6 +13,4 @@
       ansible.builtin.reboot:
         msg: "Rebooting after updates"
   roles:
-    - role: redhat.rhel_system_roles.timesync
-    - role: redhat.rhel_idm.ipaclient
-      state: present
+    - name: infra.osbuild.setup_server

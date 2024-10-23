@@ -1,0 +1,26 @@
+---
+- name: Stop Satellite Services
+  hosts: satellite
+  become: true
+  tasks:
+    - name: Stop Satellite Services
+      ansible.builtin.command: satellite-maintain service stop
+
+- name: Stop IDM Services
+  hosts: ipaservers
+  become: true
+  tasks:
+    - name: Stop IDM Services
+      ansible.builtin.command: ipactl stop
+
+- name: Shut Down Lab Hosts
+  hosts: all
+  become: true
+  order: sorted
+  tasks:
+    - name: Print a message about the host
+      ansible.builtin.debug:
+        msg: My hostname is {{ ansible_hostname }}
+    - name: Shut Down Lab Hosts
+      community.general.shutdown:
+

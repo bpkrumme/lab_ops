@@ -1,0 +1,11 @@
+---
+- name: Install all available updates from satellite
+  hosts: all,!satellite,!lab
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install available updates
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true

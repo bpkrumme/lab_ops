@@ -10,6 +10,10 @@ ansible-navigator:
     pull:
       policy: missing
     image: lab_ops_ee
+    volume-mounts:
+      - dest: /blueprints
+        src: /home/bkrumme/ansibleprojects/lab_ops/blueprints
+        options: Z
   playbook-artifact:
     enable: true
     save-as: 'artifacts/{playbook_name}-artifact-{time_stamp}.json'

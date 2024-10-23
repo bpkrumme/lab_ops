@@ -1,0 +1,84 @@
+name = rhel9-cis3-idm
+description = "rhel9-cis2-idm"
+version = "0.0.1"
+[[packages]]
+name = "aide"
+version = "*"
+
+[[packages]]
+name = "sudo"
+version = "*"
+
+[[packages]]
+name = "audit"
+version = "*"
+
+[[packages]]
+name = "rsyslog"
+version = "*"
+
+[[packages]]
+name = "firewalld"
+version = "*"
+
+[[packages]]
+name = "nftables"
+version = "*"
+
+[[packages]]
+name = "libselinux"
+version = "*"
+
+[[customizations.filesystem]]
+mountpoint = "/"
+size = "10 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/home"
+size =  "5 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/tmp"
+size =  "5 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/var"
+size =  "5 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/var/log"
+size =  "5 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/var/log/audit"
+size =  "10 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/var/tmp"
+size =  "5 GB"
+
+[[customizations.filesystem]]
+mountpoint = "/var/lib"
+size = "20 GB"
+
+[[customizations.user]]
+name = "testuser"
+description = "test user"
+password = "R3dH4tBr4d!"
+key = "~/.ssh/id_rsa.pub"
+groups = [ "users", "wheel",]
+
+[customizations.kernel]
+append = "audit_backlog_limit=8192 audit=1"
+
+[customizations.services]
+enabled = [ "crond", "firewalld", "systemd-journald", "rsyslog", "auditd",]
+masked = [ "nfs-server", "rpcbind", "nftables",]
+
+[customizations.subscription]
+activation-key = "bpk_lab_key"
+base-url = "https://cdn.redhat.com/"
+insights = true
+organization = 17841984
+rhc = true
+server-url = "subscription.rhsm.redhat.com"

@@ -7,7 +7,7 @@
   pre_tasks:
     - name: Install the Satellite certificates
       ansible.builtin.dnf:
-        name: http://192.168.124.7/pub/katello-ca-consumer-latest.noarch.rpm
+        name: http://192.168.124.5/pub/katello-ca-consumer-latest.noarch.rpm
         state: present
         disable_gpg_check: true
     - name: Register system with Satellite

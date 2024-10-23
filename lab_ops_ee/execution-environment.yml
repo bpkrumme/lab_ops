@@ -2,7 +2,7 @@
 version: 3
 
 build_arg_defaults:
-  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--pre -c -v"
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--pre -c -v --ignore-certs"
   PKGMGR_PRESERVE_CACHE: "always"
 
 dependencies:
@@ -10,7 +10,11 @@ dependencies:
 
 images:
   base_image:
+<<<<<<< HEAD
     name: pah.bk.lab/ansible-automation-platform-24/ee-minimal-rhel9:latest
+=======
+    name: pah.bk.mobile/ee-minimal-rhel8:latest
+>>>>>>> refs/remotes/origin/main
 
 options:
   package_manager_path: /usr/bin/microdnf
@@ -22,4 +26,5 @@ additional_build_files:
 additional_build_steps:
   prepend_galaxy:
     - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+  append_final: RUN mkdir /blueprints
 ...
