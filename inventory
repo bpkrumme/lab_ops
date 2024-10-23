@@ -11,7 +11,16 @@ satellite.bk.lab
 lab.bk.local
 
 [aap]
-aap.bk.lab
+controller.bk.lab
+pah.bk.lab
+eda.bk.lab
+execution.bk.lab
 
-[proxy]
-proxy.bk.lab
+[db]
+postgresql.bk.lab
+
+[testaap]
+testaap.bk.lab
+
+[utility]
+utility.bk.lab

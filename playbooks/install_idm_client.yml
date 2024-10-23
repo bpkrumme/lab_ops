@@ -1,7 +1,7 @@
 ---
 - name: Install basic idm client in lab environment
-  hosts: all,!ipaservers,!ipareplicas,!satellite,!lab
-  become: false
+  hosts: aap,testaap
+  become: true
   vars_files:
     - ../vault.yml
   pre_tasks:
