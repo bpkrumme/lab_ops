@@ -10,10 +10,5 @@ ansible_timesync_ntp_servers:
 ipaadmin_principal: admin
 ipaadmin_password: "{{ lab_ipa_admin_password }}"
 ipaclient_mkhomedir: true
-<<<<<<< HEAD
 lab_satellite_activationkey: LabInfra
 lab_satellite_organization: HomeLab
-=======
-lab_satellite_activationkey: ProdLabRHEL9
-lab_satellite_organization: MobileLab
->>>>>>> refs/remotes/origin/main

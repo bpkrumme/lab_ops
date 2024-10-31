@@ -9,7 +9,7 @@ ansible-navigator:
     enabled: true
     pull:
       policy: missing
-    image: lab_ops_ee
+    image: lab_ops_ee:latest
     volume-mounts:
       - dest: /blueprints
         src: /home/bkrumme/ansibleprojects/lab_ops/blueprints

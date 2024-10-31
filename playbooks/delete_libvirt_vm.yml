@@ -1,0 +1,36 @@
+---
+- name: Delete a virtual machine from libvirt host
+  hosts: '{{ target | default("all") }}'
+  become: true
+  tasks:
+    - name: Get list of VM domains
+      community.libvirt.virt:
+        command: list_vms
+      register: listed_vms
+
+    - name: Validate VM exists
+      ansible.builtin.debug:
+        msg: "{{ (listed_vms|selectattr('list_vms', 'contains', lab_ops_vm_name)|first).master }}"
+
+    - name: Testing for match
+      ansible.builtin.debug:
+        msg: vm exists
+      when: listed_vms.list_vms is search("{{ lab_ops_vm_name }}")
+
+#    - name: Destroy the libvirt host
+#      community.libvirt.virt:
+#        name: "{{ lab_ops_vm_name }}"
+#        state: destroyed
+#      #when: 
+#
+#    - name: Undefine the libvirt host
+#      community.libvirt.virt:
+#        name: "{{ lab_ops_vm_name }}"
+#        command: undefine
+#        force: true
+#      #when: 
+#
+#    - name: Delete the libvirt disk image
+#      ansible.builtin.file:
+#        path: "/var/lib/libvirt/images/{{ lab_ops_vm_name }}.qcow2"
+#        state: absent#
