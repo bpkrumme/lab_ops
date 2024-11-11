@@ -1,3 +1,2 @@
-python3-requests
 pkg-config
 libvirt-devel

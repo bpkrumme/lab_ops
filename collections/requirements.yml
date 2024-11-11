@@ -3,9 +3,10 @@ collections:
   - name: ansible.posix
   - name: ansible.utils
   - name: community.general
+  - name: community.libvirt
+  - name: infra.osbuild
   - name: redhat.rhel_system_roles
   - name: redhat.rhel_idm
   - name: redhat.satellite_operations
   - name: redhat.insights
-  - name: infra.osbuild
-  - name: community.libvirt
+...

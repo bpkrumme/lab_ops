@@ -1,4 +1,4 @@
-[ipaservers]
+[ipaserver]
 idm01.bk.lab
 
 [ipareplicas]
@@ -11,16 +11,7 @@ satellite.bk.lab
 lab.bk.local
 
 [aap]
-controller.bk.lab
-pah.bk.lab
-eda.bk.lab
-execution.bk.lab
-
-[db]
-postgresql.bk.lab
-
-[testaap]
-testaap.bk.lab
+aap.bk.lab
 
 [utility]
 utility.bk.lab
